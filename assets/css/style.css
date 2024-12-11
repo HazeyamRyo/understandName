@@ -1,0 +1,319 @@
+/* 全体のスタイル */
+body {
+   font-family: 'Roboto', sans-serif;
+   background-image: url(../img/background-image.jpg);
+   background-size: cover;
+   margin: 0;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   flex-direction: row; /* 横並びにする */
+   justify-content: space-between; /* 両端に配置する */
+}
+.question-container {
+   width: 60%;
+   margin: 10px;
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  
+}
+.hint-container {
+   margin: 10px;
+   width: 40%;
+   background-color: #abadab;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+}
+.header {
+   width: 100%;
+   padding: 10px;
+   margin: 0 auto;
+   background-color:#96bdf8;
+   color: white;
+   font-size: 1.5em;
+   text-align: center;
+   border-radius: 8px;
+   margin-bottom: 20px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   display: flex;
+}
+
+.difficulty , .score, .goal{
+   width: 20%;
+   margin: 10px;
+   padding: 10px;
+   border-radius: 8px;
+   background-color: #292525;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   font-size: 15px;
+   text-align: center;
+}
+
+.goal {
+   width: 50%;
+   font-size: 15px;
+}
+.goal-title{
+   font-size: 15px;
+   color: #fff;
+   white-space: nowrap; /* テキストを1行に表示 */
+   margin: auto;
+}
+
+.goal-text{
+   font-size: 20px;
+   color: #ff4500;
+   white-space: nowrap; /* テキストを1行に表示 */
+   margin: auto;
+}
+
+#score {
+   font-size: 1.5em;
+   color: #28a745;
+}
+
+/* 結果のスタイル */
+#result {
+   position: absolute;
+   top: 35%;
+   left: 25%;
+   transform: translate(-50%, -50%);
+   padding: 20px;
+   font-size: 36px;
+   font-weight: bold;
+   border-radius: 10px;
+   text-align: center;
+   opacity: 0;
+   transform: scale(0.8);
+   transition: opacity 0.5s ease, transform 0.5s ease;
+   z-index: 1000;
+}
+
+#result.correct {
+   background-color: rgba(40, 167, 69, 0.9);
+   color: white;
+   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.5);
+   animation: bounce 1s ease;
+}
+
+#result.wrong {
+   background-color: rgba(220, 53, 69, 0.9);
+   color: white;
+   box-shadow: 0 4px 15px rgba(220, 53, 69, 0.5);
+   animation: shake 0.6s ease;
+}
+
+/* アニメーション */
+@keyframes bounce {
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+   0%, 100% { transform: translateX(0); }
+   25% { transform: translateX(-5px); }
+   50% { transform: translateX(5px); }
+   75% { transform: translateX(-5px); }
+}
+
+
+#difficulty {
+   font-size: 1.5em;
+   color: #17a2b8;
+   white-space: nowrap; /* テキストを1行に表示 */
+}
+
+#difficulty {
+   font-size: 1.5em;
+   color: #17a2b8;
+   white-space: nowrap; /* テキストを1行に表示 */
+}
+
+.difficulty-message {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   padding: 30px;
+   background-color: #ff4500; /* ドラゴンボールのオレンジ色 */
+   color: white;
+   font-size: 36px;
+   border-radius: 8px;
+   text-align: center;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+   z-index: 1000;
+   animation: dragonBallAnimation 4.2s ease;
+}
+
+/* ドラゴンボールっぽいアニメーション */
+@keyframes dragonBallAnimation {
+   0% { 
+       opacity: 0; 
+       transform: translate(-50%, -60%) scale(0.5); 
+       background-color: #ff4500; 
+   }
+   25% { 
+       opacity: 1; 
+       transform: translate(-50%, -50%) scale(1.2); 
+       background-color: #ff6347; 
+   }
+   50% { 
+       opacity: 1; 
+       transform: translate(-50%, -50%) scale(1); 
+       background-color: #ff4500; 
+   }
+   75% { 
+       opacity: 1; 
+       transform: translate(-50%, -50%) scale(1.2); 
+       background-color: #ff6347; 
+   }
+   100% { 
+       opacity: 0; 
+       transform: translate(-50%, -40%) scale(0.5); 
+       background-color: #ff4500; 
+   }
+}
+
+#question {
+   width: 80%;
+   margin-bottom: 20px;
+   padding: 15px;
+   border-radius: 8px;
+   background-color: #fff;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   text-align: center;
+   font-size: 2em;
+   color: #333;
+   margin: 0 auto;
+}
+
+#choices {
+   display: flex;
+   flex-direction: row; /* 横並びにする */
+   justify-content: space-between; /* 両端に配置する */
+   align-items: center; /* 中央揃えにする */
+   flex-wrap: wrap; /* 必要に応じて折り返す */
+   width: 80%;
+   height: auto;
+}
+#question {
+   width: 80%;
+   margin:30px 10px 10px;
+   padding: 15px;
+   border-radius: 8px;
+   background-color: #fff;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   text-align: center;
+   font-size: 2em;
+   color: #333;
+   margin: 0 auto;
+}
+
+#choices {
+   display: flex;
+   flex-direction: row; /* 横並びにする */
+   justify-content: space-between; /* 両端に配置する */
+   align-items: center; /* 中央揃えにする */
+   width: 100%;
+   height: auto;
+   margin: 0 auto;
+}
+
+.choices-buttons {
+   display: flex;
+   flex-direction: row; /* 横並びにする */
+   justify-content: space-evenly;
+   align-items: center;
+   width: 50%;
+   order: 2; /* ボタンを右側に配置 */
+}
+
+.choices-buttons button {
+   background-color: #007bff;
+   color: white;
+   padding: 15px 30px;
+   margin: 15px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   font-size: 1.2em; 
+   transition: background-color 0.3s, transform 0.3s;
+   width: auto;
+   transform: scale(1.2); 
+}
+
+.choices-buttons button:hover {
+   background-color: #0056b3;
+   transform: scale(1.25); 
+}
+
+
+#choices canvas {
+   width: 35%;
+   height: auto;
+   margin: 100px 20px 20px;
+   border: 5px solid #007bff;
+   border-radius: 8px;
+   order: 1; /* 画像を左側に配置 */
+}
+
+.hint-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+#hint {
+   width: 80%;
+   margin-top: 20px;
+   padding: 15px;
+   border-radius: 8px;
+   background-color: #fff;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   text-align: center;
+}
+
+#hint .hintTitle {
+   font-size: 1.5em;
+   color: #333;
+   margin-bottom: 10px;
+}
+
+#hint .hintFigure {
+   width: 100%;
+   max-width: 300px;
+   height: auto;
+   border: 2px solid #ccc;
+   border-radius: 8px;
+}
+
+#hintButton {
+   background-color: #daee29;
+   color: rgb(76, 79, 80);
+   font-weight: bold;
+   padding: 15px 30px;
+   margin-top: 20px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   font-size: 1.2em;
+   transition: background-color 0.3s, transform 0.3s;
+}
+
+#hintButton:hover {
+   background-color: #daee29;
+   transform: scale(1.05);
+}
+
+.hidden {
+   display: none;
+}
+
+canvas {
+   transition: transform 0.5s ease-in-out;
+}
